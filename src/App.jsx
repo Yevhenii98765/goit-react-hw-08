@@ -1,33 +1,23 @@
-import { useDispatch, useSelector } from "react-redux";
-import ContactList from "./components/ContactList/ContactList";
-import ContactsForm from "./components/ContactsForm/ContactsForm";
-import Container from "./components/Container/Container";
-import SearchBox from "./components/SearchBox/SearchBox";
-import { useEffect } from "react";
-import { fetchDataThunk } from "./redux/contactsOps";
-import { selectIsError, selectIsLoading } from "./redux/Contacts/contactsSlice";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
+import HomePage from "./pages/HomePage/HomePage";
+import Taskc from "./pages/Taskc/Taskc";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import NoteFound from "./pages/NotFound/NotFound";
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  const isLoading = useSelector(selectIsLoading);
-  const isError = useSelector(selectIsError);
-
-  useEffect(() => {
-    dispatch(fetchDataThunk());
-  }, [dispatch]);
-
   return (
     <>
-      <Container>
-        <SearchBox />
-        <ContactsForm />
-        {isLoading && (
-          <span className="loading loading-spinner text-primary"></span>
-        )}
-        {isError && <h1>Error</h1>}
-        <ContactList />
-      </Container>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="taskc" element={<Taskc />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+        </Route>
+        <Route path="*" element={<NoteFound />} />
+      </Routes>
     </>
   );
 };

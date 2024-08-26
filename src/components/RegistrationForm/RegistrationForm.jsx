@@ -1,21 +1,28 @@
 import { Field, Form, Formik } from "formik";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { registerThunk } from "../../redux/auth/operation";
 
-export const Login = () => {
+export const RegistrationForm = () => {
+  const dispath = useDispatch();
+
   const initialValues = {
+    name: "",
     email: "",
-    package: "",
+    password: "",
   };
 
   const handleSubmit = (values, options) => {
     console.log(values);
+    dispath(registerThunk(values));
     options.resetForm();
   };
+
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login</h1>
+          <h1 className="text-5xl font-bold">SignUP now!</h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
@@ -27,10 +34,21 @@ export const Login = () => {
             <Form className="card-body">
               <div className="form-control">
                 <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <Field
+                  name="name"
+                  placeholder="name"
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <Field
                   name="email"
+                  type="email"
                   placeholder="email"
                   className="input input-bordered"
                 />
@@ -41,17 +59,18 @@ export const Login = () => {
                 </label>
                 <Field
                   name="password"
+                  type="password"
                   placeholder="password"
                   className="input input-bordered"
                 />
                 <label className="label">
-                  <Link to="/signup" className="label-text-alt link link-hover">
-                    You did not have account? Sign up!
+                  <Link to="/login" className="label-text-alt link link-hover">
+                    You already have account? Sign in!
                   </Link>
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary">SingUP</button>
               </div>
             </Form>
           </Formik>
@@ -60,5 +79,4 @@ export const Login = () => {
     </div>
   );
 };
-
-export default Login;
+export default RegistrationForm;

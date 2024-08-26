@@ -1,13 +1,12 @@
-import clsx from "clsx";
+import { useDispatch } from "react-redux";
+import { logoutThunk } from "../../redux/auth/operation";
+
 export const UserMenu = () => {
-  const buildLinkClass = ({ isActive }) => {
-    return clsx(isActive && "activeNavLink");
-  };
+  const dispatch = useDispatch();
+
   return (
     <div>
-      <li>
-        <button className={buildLinkClass}>Exit</button>
-      </li>
+      <button onClick={() => dispatch(logoutThunk())}>Exit</button>
     </div>
   );
 };

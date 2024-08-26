@@ -10,11 +10,6 @@ export const Navigation = () => {
     <div>
       <ul className={s.iner}>
         <li>
-          <NavLink className={buildLinkClass} to="/">
-            Home
-          </NavLink>
-        </li>
-        <li>
           <NavLink className={buildLinkClass} to="/taskc">
             Taskc
           </NavLink>

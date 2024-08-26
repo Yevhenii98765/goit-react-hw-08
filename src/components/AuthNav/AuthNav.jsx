@@ -10,13 +10,13 @@ export const AuthNav = () => {
     <div>
       <ul className={s.iner}>
         <li>
-          <NavLink className={buildLinkClass} to="/login">
-            Login
+          <NavLink className={buildLinkClass} to="/register">
+            Register
           </NavLink>
         </li>
         <li>
-          <NavLink className={buildLinkClass} to="/signup">
-            SignUp
+          <NavLink className={buildLinkClass} to="/login">
+            Log In
           </NavLink>
         </li>
       </ul>

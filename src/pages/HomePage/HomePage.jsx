@@ -1,9 +1,9 @@
-import Login from "../Login/Login";
+import LoginPage from "../LoginPage.jsx/LoginPage";
 
 export const HomePage = () => {
   return (
     <div>
-      <Login />
+      <LoginPage />
     </div>
   );
 };

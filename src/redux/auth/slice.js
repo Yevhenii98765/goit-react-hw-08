@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginThunk, logoutThunk, registerThunk } from "./operation";
+import {
+  loginThunk,
+  logoutThunk,
+  refrechUserThunk,
+  registerThunk,
+} from "./operation";
 
 const initialState = {
   user: {
@@ -8,6 +13,7 @@ const initialState = {
   },
   token: null,
   isLoggedIn: false,
+  isRefreshing: false,
 };
 
 const slice = createSlice({
@@ -27,6 +33,18 @@ const slice = createSlice({
       })
       .addCase(logoutThunk.fulfilled, () => {
         return initialState;
+      })
+      .addCase(refrechUserThunk.pending, (state) => {
+        state.isRefreshing = true;
+      })
+      .addCase(refrechUserThunk.rejected, (state) => {
+        state.isRefreshing = false;
+      })
+      .addCase(refrechUserThunk.fulfilled, (state, action) => {
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
       });
   },
 });

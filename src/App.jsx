@@ -6,7 +6,7 @@ import NoteFound from "./pages/NotFound/NotFound";
 import LoginPage from "./pages/LoginPage.jsx/LoginPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { refrechUserThunk } from "./redux/auth/operation";
+import { refrechUserThunk } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";

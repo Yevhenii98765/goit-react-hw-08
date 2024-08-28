@@ -6,7 +6,7 @@
 //   fetchingError,
 // } from "./contactsSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { goitApi } from "../auth/operation";
+import { goitApi } from "../auth/operations";
 
 export const fetchDataThunk = createAsyncThunk(
   "fetchData",

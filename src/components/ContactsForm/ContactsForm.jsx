@@ -2,10 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { addContactThunk } from "../../redux/contacts/operations";
-const initialValues = {
-  name: "",
-  number: "",
-};
+import s from "./ContactsForm.module.css";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -19,6 +16,10 @@ const validationSchema = Yup.object().shape({
 });
 
 export const ContactsForm = () => {
+  const initialValues = {
+    name: "",
+    number: "",
+  };
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
     console.log(values);
@@ -34,11 +35,26 @@ export const ContactsForm = () => {
         validationSchema={validationSchema}
       >
         <Form>
-          <ErrorMessage name="name" component="span" />
-          <Field type="text" name="name" placeholder="Name" />
-          <ErrorMessage name="number" component="span" />
-          <Field type="text" name="number" placeholder="Number" />
-          <button>submit</button>
+          <div style={{ display: "flex" }}>
+            <div style={{ position: "relative" }}>
+              <ErrorMessage name="name" component="span" className={s.error} />
+              <Field
+                type="text"
+                name="name"
+                placeholder="Name"
+                className={s.input}
+              />
+            </div>
+            <div style={{ position: "relative" }}>
+              <ErrorMessage
+                name="number"
+                component="span"
+                className={s.error}
+              />
+              <Field type="text" name="number" placeholder="Number" />
+            </div>
+            <button type="submit">submit</button>
+          </div>
         </Form>
       </Formik>
     </div>

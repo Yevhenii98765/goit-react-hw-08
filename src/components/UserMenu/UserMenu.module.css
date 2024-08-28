@@ -1,0 +1,7 @@
+.iner {
+  display: flex;
+  gap: 10px;
+  p {
+    color: white;
+  }
+}

@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 export const LoginPage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   if (isLoggedIn) {
-    return <Navigate to="/taskc" />;
+    return <Navigate to="/contacts" />;
   }
   return <LoginForm />;
 };
